@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 export default function Movie() {
     const [movieName, setMovieName] = useState('')
@@ -65,6 +66,7 @@ export default function Movie() {
                 <th>Movie Review</th>
                 <th></th>
                 <th>Update Review</th>
+                <th></th>
             </thead>
             {
                 movieReviewList.map(movieReview => (
@@ -77,6 +79,9 @@ export default function Movie() {
                         <td>
                             <input type="text" id="updateInput" onChange = {(e) => setNewReview(e.target.value)} />
                             <button className="update" onClick={() => updateReview(movieReview.id)}>Update</button>
+                        </td>
+                        <td>
+                            <Link to={"/api/get/"+movieReview.id}>View</Link>
                         </td>
                     </tr>
                 ))
