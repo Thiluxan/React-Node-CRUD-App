@@ -25,6 +25,15 @@ app.get('/api/get',(req,res) => {
     })
 })
 
+app.get('/api/get/:id', (req,res) => {
+    const id = req.params.id
+    const sql = "SELECT * FROM movie_review WHERE id = ?;";
+    db.query(sql,id,(err,result) => {
+        res.send(result)
+        console.log(result)
+    })
+})
+
 app.post('/api/insert', (req, res) => {
 
     const movieName = req.body.movieName;
